@@ -253,11 +253,11 @@
         </div>
     </section>
 
-    <!-- iSocietyManager Features Grid -->
+    <!-- H2Hsafetech Features Grid -->
     <section class="py-5 dark-section">
         <div class="container py-lg-5">
             <div class="mb-5">
-                <h2 class="fw-bold"><span class="text-white">Features</span> <span class="text-primary">iSocietyManager
+                <h2 class="fw-bold"><span class="text-white">Features</span> <span class="text-primary">H2Hsafetech
                         Features</span></h2>
             </div>
             <div class="row g-4">

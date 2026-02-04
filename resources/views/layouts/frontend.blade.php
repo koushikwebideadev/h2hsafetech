@@ -102,6 +102,8 @@
                             href="{{ route('about-us') }}">About us</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('features') ? 'active' : '' }}"
                             href="{{ route('features') }}">Features</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::is('pricing') ? 'active' : '' }}"
+                            href="{{ route('pricing') }}">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('services') ? 'active' : '' }}"
                             href="{{ route('services') }}">Services</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('blogs.index') ? 'active' : '' }}"

@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::get('/services', [App\Http\Controllers\HomeController::class, 'services'])->name('services');
 Route::get('/features', [App\Http\Controllers\HomeController::class, 'features'])->name('features');
 Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricing');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
@@ -94,6 +95,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/business-settings', [\App\Http\Controllers\Admin\BusinessSettingController::class, 'index'])->name('business-settings.index');
         Route::post('/business-settings', [\App\Http\Controllers\Admin\BusinessSettingController::class, 'update'])->name('business-settings.update');
         Route::post('/business-settings/test-mail', [\App\Http\Controllers\Admin\BusinessSettingController::class, 'sendTestMail'])->name('business-settings.test-mail');
+
+
+        // Testimonial Management
+        Route::resource('testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
+        Route::patch('testimonials/{testimonial}/toggle-status', [\App\Http\Controllers\Admin\TestimonialController::class, 'toggleStatus'])->name('testimonials.toggle-status');
+
+        // Pricing Plan Management
+        Route::resource('pricing-plans', \App\Http\Controllers\Admin\PricingPlanController::class);
+
+        // Site Content Management
+        Route::get('site-contents', [\App\Http\Controllers\Admin\SiteContentController::class, 'index'])->name('site-contents.index');
+        Route::get('site-contents/{section}/edit', [\App\Http\Controllers\Admin\SiteContentController::class, 'edit'])->name('site-contents.edit');
+        Route::put('site-contents/{section}', [\App\Http\Controllers\Admin\SiteContentController::class, 'update'])->name('site-contents.update');
     });
 });
 

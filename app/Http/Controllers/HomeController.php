@@ -29,4 +29,14 @@ class HomeController extends Controller
         $page = \App\Models\Page::where('slug', $slug)->firstOrFail();
         return view('pages.show', compact('page'));
     }
+
+    public function pricing()
+    {
+        $pricingPlans = \App\Models\PricingPlan::active()->ordered()->with('features')->get();
+        $testimonials = \App\Models\Testimonial::where('is_active', true)->orderBy('sort_order')->get();
+        $contents = \App\Models\SiteContent::whereIn('section', ['pricing_hero', 'pricing_notes'])
+            ->get()
+            ->groupBy('section');
+        return view('pricing', compact('pricingPlans', 'testimonials', 'contents'));
+    }
 }

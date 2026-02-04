@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center mb-8">
         <div>
             <h1 class="text-2xl font-bold text-slate-800">Manage Features</h1>
-            <p class="text-slate-500 text-sm">Manage the features displayed in the iSocietyManager grid.</p>
+            <p class="text-slate-500 text-sm">Manage the features displayed in the H2Hsafetech grid.</p>
         </div>
         <a href="{{ route('admin.features.create') }}" class="btn-premium">
             <i class="fas fa-plus"></i> Add New Feature

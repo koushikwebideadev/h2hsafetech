@@ -130,9 +130,12 @@
 
 <body class="bg-slate-50 text-slate-800">
 
-    <div class="flex h-screen overflow-hidden" x-data="{ sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true' }" x-init="$watch('sidebarCollapsed', val => localStorage.setItem('sidebarCollapsed', val))">
+    <div class="flex h-screen overflow-hidden"
+        x-data="{ sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true' }"
+        x-init="$watch('sidebarCollapsed', val => localStorage.setItem('sidebarCollapsed', val))">
         <!-- Sidebar -->
-        <aside :class="sidebarCollapsed ? 'w-20' : 'w-64'" class="bg-white border-r border-slate-100 flex-shrink-0 flex flex-col transition-all duration-300 overflow-hidden">
+        <aside :class="sidebarCollapsed ? 'w-20' : 'w-64'"
+            class="bg-white border-r border-slate-100 flex-shrink-0 flex flex-col transition-all duration-300 overflow-hidden">
             <!-- Logo -->
             <div class="h-16 flex items-center px-6 border-b border-slate-50">
                 <div class="flex items-center gap-2 font-bold text-2xl tracking-tight text-slate-800">
@@ -146,7 +149,8 @@
                     @if($webLogoPath)
                         <img src="{{ $webLogoPath }}" alt="Logo" :class="sidebarCollapsed ? 'h-8 mx-auto' : 'h-8'">
                     @else
-                        <span class="text-violet-600 text-3xl" :class="sidebarCollapsed ? 'mx-auto' : ''"><i class="fas fa-cube"></i></span>
+                        <span class="text-violet-600 text-3xl" :class="sidebarCollapsed ? 'mx-auto' : ''"><i
+                                class="fas fa-cube"></i></span>
                         <span x-show="!sidebarCollapsed" x-transition>{{ $settings['company_name'] ?? 'Axelit' }}</span>
                     @endif
                 </div>
@@ -154,7 +158,8 @@
 
             <!-- Nav -->
             <div class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-                <p x-show="!sidebarCollapsed" class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Dashboard</p>
+                <p x-show="!sidebarCollapsed"
+                    class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Dashboard</p>
 
                 <a href="{{ route('admin.dashboard') }}"
                     class="flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-sm {{ Request::is('admin/dashboard') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} transition-colors"
@@ -163,32 +168,44 @@
                 </a>
 
                 <div class="pt-4">
-                    <p x-show="!sidebarCollapsed" class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Features</p>
+                    <p x-show="!sidebarCollapsed"
+                        class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Features</p>
                     <a href="{{ route('admin.features.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/features*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Manage Features' : ''">
-                        <i class="fas fa-list w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage Features</span>
+                        <i class="fas fa-list w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage
+                            Features</span>
                     </a>
                     <a href="{{ route('admin.screenshots.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/screenshots*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Manage Screenshots' : ''">
-                        <i class="fas fa-mobile-screen w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage Screenshots</span>
+                        <i class="fas fa-mobile-screen w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage
+                            Screenshots</span>
                     </a>
                     <a href="{{ route('admin.services.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/services*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Manage Services' : ''">
-                        <i class="fas fa-concierge-bell w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage Services</span>
+                        <i class="fas fa-concierge-bell w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage
+                            Services</span>
                     </a>
                     <a href="{{ route('admin.feature-categories.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/feature-categories*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Feature Categories' : ''">
-                        <i class="fas fa-layer-group w-5 text-center"></i> <span x-show="!sidebarCollapsed">Feature Categories</span>
+                        <i class="fas fa-layer-group w-5 text-center"></i> <span x-show="!sidebarCollapsed">Feature
+                            Categories</span>
+                    </a>
+                    <a href="{{ route('admin.testimonials.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/testimonials*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
+                        :title="sidebarCollapsed ? 'Testimonials' : ''">
+                        <i class="fas fa-quote-left w-5 text-center"></i> <span
+                            x-show="!sidebarCollapsed">Testimonials</span>
                     </a>
                     <a href="{{ route('admin.contact-leads.index') }}"
                         class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/contact-leads*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Contact Leads' : ''">
                         <div class="flex items-center gap-3">
-                            <i class="fas fa-envelope w-5 text-center"></i> <span x-show="!sidebarCollapsed">Contact Leads</span>
+                            <i class="fas fa-envelope w-5 text-center"></i> <span x-show="!sidebarCollapsed">Contact
+                                Leads</span>
                         </div>
                         @php $newLeads = \App\Models\ContactLead::where('status', 'new')->count(); @endphp
                         @if($newLeads > 0)
@@ -199,14 +216,17 @@
                     <a href="{{ route('admin.book-demo-leads.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/book-demo-leads*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Book Demo Leads' : ''">
-                        <i class="fas fa-calendar-check w-5 text-center"></i> <span x-show="!sidebarCollapsed">Book Demo Leads</span>
+                        <i class="fas fa-calendar-check w-5 text-center"></i> <span x-show="!sidebarCollapsed">Book Demo
+                            Leads</span>
                     </a>
 
-                    <p x-show="!sidebarCollapsed" class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 pt-4">Blog</p>
+                    <p x-show="!sidebarCollapsed"
+                        class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 pt-4">Blog</p>
                     <a href="{{ route('admin.blog-categories.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/blog-categories*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Blog Categories' : ''">
-                        <i class="fas fa-tags w-5 text-center"></i> <span x-show="!sidebarCollapsed">Blog Categories</span>
+                        <i class="fas fa-tags w-5 text-center"></i> <span x-show="!sidebarCollapsed">Blog
+                            Categories</span>
                     </a>
                     <a href="{{ route('admin.blogs.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/blogs*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
@@ -216,33 +236,51 @@
                 </div>
 
                 <div class="pt-4">
-                    <p x-show="!sidebarCollapsed" class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Pages</p>
+                    <p x-show="!sidebarCollapsed"
+                        class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Pages</p>
                     <a href="{{ route('admin.pages.home.edit') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/pages/home') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Home page' : ''">
-                        <i class="fas fa-shopping-bag w-5 text-center"></i> <span x-show="!sidebarCollapsed">Home page</span>
+                        <i class="fas fa-shopping-bag w-5 text-center"></i> <span x-show="!sidebarCollapsed">Home
+                            page</span>
                     </a>
                     <a href="{{ route('admin.pages.about-us.edit') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/pages/about-us') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'About Us Page' : ''">
-                        <i class="fas fa-project-diagram w-5 text-center"></i> <span x-show="!sidebarCollapsed">About Us Page</span>
+                        <i class="fas fa-project-diagram w-5 text-center"></i> <span x-show="!sidebarCollapsed">About Us
+                            Page</span>
+                    </a>
+                    <a href="{{ route('admin.site-contents.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/site-contents*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
+                        :title="sidebarCollapsed ? 'Pricing Page' : ''">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center"></i> <span
+                            x-show="!sidebarCollapsed">Pricing Page</span>
                     </a>
                     <a href="{{ route('admin.custom-pages.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/custom-pages*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Custom Pages' : ''">
-                        <i class="fas fa-file-alt w-5 text-center"></i> <span x-show="!sidebarCollapsed">Custom Pages</span>
+                        <i class="fas fa-file-alt w-5 text-center"></i> <span x-show="!sidebarCollapsed">Custom
+                            Pages</span>
                     </a>
-
+                    <a href="{{ route('admin.pricing-plans.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/pricing-plans*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
+                        :title="sidebarCollapsed ? 'Pricing Plans' : ''">
+                        <i class="fas fa-tags w-5 text-center"></i> <span x-show="!sidebarCollapsed">Pricing
+                            Plans</span>
+                    </a>
                     <a href="{{ route('admin.business-settings.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/business-settings*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Business Settings' : ''">
-                        <i class="fas fa-cogs w-5 text-center"></i> <span x-show="!sidebarCollapsed">Business Settings</span>
+                        <i class="fas fa-cogs w-5 text-center"></i> <span x-show="!sidebarCollapsed">Business
+                            Settings</span>
                     </a>
                     <a href="{{ route('admin.seo-settings.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/seo-settings*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'SEO Settings' : ''">
-                        <i class="fas fa-search-plus w-5 text-center"></i> <span x-show="!sidebarCollapsed">SEO Settings</span>
+                        <i class="fas fa-search-plus w-5 text-center"></i> <span x-show="!sidebarCollapsed">SEO
+                            Settings</span>
                     </a>
+
                 </div>
 
 
@@ -268,7 +306,8 @@
                 class="bg-white/80 backdrop-blur-md h-16 border-b border-slate-100 flex items-center justify-between px-6 z-10">
                 <!-- Left: Search/Toggle -->
                 <div class="flex items-center gap-4">
-                    <button @click="sidebarCollapsed = !sidebarCollapsed" class="text-slate-500 hover:text-slate-700 focus:outline-none">
+                    <button @click="sidebarCollapsed = !sidebarCollapsed"
+                        class="text-slate-500 hover:text-slate-700 focus:outline-none">
                         <i class="fas fa-bars text-lg"></i>
                     </button>
 

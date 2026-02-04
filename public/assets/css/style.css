@@ -734,6 +734,168 @@ footer {
     animation-delay: 0.6s;
 }
 
+/* Pricing Page Styles */
+.pricing-hero {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.pricing-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-header {
+    padding: 30px 20px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.pricing-features {
+    padding: 30px 20px;
+    flex-grow: 1;
+}
+
+.pricing-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.pricing-features li i {
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.pricing-features li i.fa-check {
+    color: #22c55e;
+}
+
+.pricing-features li i.fa-times {
+    color: #ef4444;
+}
+
+.pricing-footer {
+    padding: 20px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.btn-pricing {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 600;
+    width: 100%;
+}
+
+/* Plan Colors */
+.bg-free {
+    background-color: #7ABD4C !important;
+}
+
+.bg-security {
+    background-color: #F5A623 !important;
+}
+
+.bg-management {
+    background-color: #4A3292 !important;
+}
+
+.bg-accounting {
+    background-color: #F7941D !important;
+}
+
+.bg-ultimate {
+    background-color: #00AEEF !important;
+}
+
+.pricing-comparison {
+    padding: 80px 0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    background: #f8fafc;
+}
+
+.comparison-table i.fa-check {
+    color: #22c55e;
+}
+
+.comparison-table i.fa-times {
+    color: #ef4444;
+}
+
+/* Trusted Logos & Media Coverage */
+.logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+.logo-grid img {
+    max-height: 50px;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+
+.logo-grid img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.testimonial-pricing {
+    background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+    padding: 80px 0;
+}
+
 /* Redesign Specific Styles */
 .grad-section {
     background: var(--purple-grad);
