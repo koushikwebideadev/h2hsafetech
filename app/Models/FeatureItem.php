@@ -14,6 +14,7 @@ class FeatureItem extends Model
         'icon',
         'title',
         'description',
+        'long_description',
         'item_order',
     ];
 

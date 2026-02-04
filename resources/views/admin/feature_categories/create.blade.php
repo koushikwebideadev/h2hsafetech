@@ -71,27 +71,78 @@
 
     <script>
         let itemIndex = 0;
+        let editorInstances = {};
 
         function addFeatureItem() {
             const container = document.getElementById('feature-items-container');
+            const editorId = `editor-${itemIndex}`;
             const itemHtml = `
-                        <div class="grid grid-cols-12 gap-3 items-start bg-slate-50 p-3 rounded-lg feature-item">
-                            <input type="text" name="items[${itemIndex}][icon]" placeholder="Icon class (e.g., fas fa-home)"
-                                class="col-span-3 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
-                            <input type="text" name="items[${itemIndex}][title]" placeholder="Feature title" required
-                                class="col-span-3 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
-                            <input type="text" name="items[${itemIndex}][description]" placeholder="Description"
-                                class="col-span-4 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
-                            <input type="number" name="items[${itemIndex}][item_order]" value="${itemIndex}" placeholder="Order"
-                                class="col-span-1 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
-                            <button type="button" onclick="this.parentElement.remove()"
-                                class="col-span-1 p-2 text-red-500 hover:bg-red-50 rounded transition">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
+                <div class="bg-slate-50 p-4 rounded-lg feature-item space-y-3" data-index="${itemIndex}">
+                    <div class="grid grid-cols-12 gap-3">
+                        <input type="text" name="items[${itemIndex}][icon]" placeholder="Icon class (e.g., fas fa-home)"
+                            class="col-span-3 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
+                        <input type="text" name="items[${itemIndex}][title]" placeholder="Feature title" required
+                            class="col-span-4 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
+                        <input type="text" name="items[${itemIndex}][description]" placeholder="Short Description"
+                            class="col-span-4 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
+                        <input type="number" name="items[${itemIndex}][item_order]" value="${itemIndex}" placeholder="Order"
+                            class="col-span-1 bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Long Description (for Read More popup)</label>
+                        <textarea id="${editorId}" name="items[${itemIndex}][long_description]" 
+                            class="ckeditor-editor w-full bg-white border border-slate-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100" 
+                            rows="4" placeholder="Enter detailed description..."></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="removeFeatureItem(this)"
+                            class="px-3 py-1 text-sm text-red-500 hover:bg-red-50 rounded transition">
+                            <i class="fas fa-trash"></i> Remove Item
+                        </button>
+                    </div>
+                </div>
+            `;
             container.insertAdjacentHTML('beforeend', itemHtml);
+            
+            // Initialize CKEditor for the newly added textarea
+            initializeCKEditor(editorId);
             itemIndex++;
+        }
+
+        function removeFeatureItem(button) {
+            const item = button.closest('.feature-item');
+            const textarea = item.querySelector('.ckeditor-editor');
+            if (textarea && editorInstances[textarea.id]) {
+                editorInstances[textarea.id].destroy()
+                    .then(() => {
+                        delete editorInstances[textarea.id];
+                        item.remove();
+                    })
+                    .catch(error => {
+                        console.error('Error destroying editor:', error);
+                        item.remove();
+                    });
+            } else {
+                item.remove();
+            }
+        }
+
+        function initializeCKEditor(editorId) {
+            const element = document.getElementById(editorId);
+            if (element && !editorInstances[editorId]) {
+                ClassicEditor
+                    .create(element, {
+                        toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', '|', 
+                                  'link', 'bulletedList', 'numberedList', '|', 'blockQuote', 'insertTable'],
+                        height: '200px'
+                    })
+                    .then(editor => {
+                        editorInstances[editorId] = editor;
+                    })
+                    .catch(error => {
+                        console.error('Error initializing CKEditor:', error);
+                    });
+            }
         }
 
         // Add initial items

@@ -18,8 +18,8 @@
                     <div class="d-flex flex-wrap gap-3">
                         <a href="{{ \App\Models\SiteContent::where('key', 'hero_button_1_url')->first()->content ?? '#' }}"
                             class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_1_text')->first()->content ?? 'SIGNUP IT & TRY' }}</a>
-                        <a href="{{ \App\Models\SiteContent::where('key', 'hero_button_2_url')->first()->content ?? '#' }}"
-                            class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_2_text')->first()->content ?? 'START FREE' }}</a>
+                        <!-- <a href="{{ \App\Models\SiteContent::where('key', 'hero_button_2_url')->first()->content ?? '#' }}"
+                                class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_2_text')->first()->content ?? 'START FREE' }}</a> -->
                     </div>
                 </div>
             </div>

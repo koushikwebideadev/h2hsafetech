@@ -50,6 +50,7 @@ class FeatureCategoryController extends Controller
                         'icon' => $item['icon'] ?? null,
                         'title' => $item['title'],
                         'description' => $item['description'] ?? null,
+                        'long_description' => $item['long_description'] ?? null,
                         'item_order' => $item['item_order'] ?? 0,
                     ]);
                 }
@@ -94,6 +95,7 @@ class FeatureCategoryController extends Controller
                         'icon' => $item['icon'] ?? null,
                         'title' => $item['title'],
                         'description' => $item['description'] ?? null,
+                        'long_description' => $item['long_description'] ?? null,
                         'item_order' => $item['item_order'] ?? 0,
                     ]);
                 }
