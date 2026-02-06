@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Blogs')
 
 @section('content')
     <div class="flex justify-between items-center mb-8">

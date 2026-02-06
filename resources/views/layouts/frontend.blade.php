@@ -89,7 +89,7 @@
                         ? (($webLogo['storage'] ?? 'public') == 'assets/images' ? asset('assets/images/' . $webLogo['image_name']) : asset('storage/' . $webLogo['image_name']))
                         : asset('assets/images/logo.png');
                 @endphp
-                <img src="{{ $webLogoPath }}" alt="{{ $settings['company_name'] ?? 'H2Hsafetech' }} Logo" height="50">
+                <img src="{{ $webLogoPath }}" alt="{{ $settings['company_name'] ?? 'H2Hsafetech' }} Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

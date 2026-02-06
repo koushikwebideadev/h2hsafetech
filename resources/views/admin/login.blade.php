@@ -4,7 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - TJSB Society</title>
+    <title>Admin Login - {{ $settings['company_name'] ?? 'TJSB Society' }}</title>
+    @php
+        $favIcon = isset($settings['company_fav_icon']) ? json_decode($settings['company_fav_icon'], true) : null;
+        $favIconPath = ($favIcon && isset($favIcon['image_name']))
+            ? (($favIcon['storage'] ?? 'public') == 'assets/images' ? asset('assets/images/' . $favIcon['image_name']) : asset('storage/' . $favIcon['image_name']))
+            : null;
+    @endphp
+    @if($favIconPath)
+        <link rel="icon" type="image/x-icon" href="{{ $favIconPath }}">
+    @endif
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .btn-premium {
@@ -43,10 +52,14 @@
 
     <div class="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 max-w-md w-full border border-slate-100">
         <div class="text-center mb-8">
-            <div
-                class="w-16 h-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                TJSB
-            </div>
+            @php
+                $webLogo = isset($settings['company_web_logo']) ? json_decode($settings['company_web_logo'], true) : null;
+                $webLogoPath = ($webLogo && isset($webLogo['image_name']))
+                    ? (($webLogo['storage'] ?? 'public') == 'assets/images' ? asset('assets/images/' . $webLogo['image_name']) : asset('storage/' . $webLogo['image_name']))
+                    : asset('assets/images/logo.png');
+            @endphp
+            <img src="{{ $webLogoPath }}" alt="{{ $settings['company_name'] ?? 'TJSB' }} Logo"
+                class="h-16 w-auto mx-auto mb-4 object-contain" style="max-height: 64px;">
             <h1 class="text-2xl font-bold text-slate-800">Admin Login</h1>
             <p class="text-slate-500">Sign in to access your dashboard</p>
         </div>

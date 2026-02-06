@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Business Settings')
 
 @section('content')
 <div class="mb-6">

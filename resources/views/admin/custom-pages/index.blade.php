@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Custom Pages')
 
 @section('content')
     <div class="flex justify-between items-center mb-8">

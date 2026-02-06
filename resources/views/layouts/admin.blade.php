@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $settings['company_name'] ?? 'Axelit Admin' }} - Admin</title>
+    <title>{{ $settings['company_name'] ?? 'Axelit Admin' }} - @yield('title', 'Admin')</title>
     @php
         $favIcon = isset($settings['company_fav_icon']) ? json_decode($settings['company_fav_icon'], true) : null;
         $favIconPath = ($favIcon && isset($favIcon['image_name']))

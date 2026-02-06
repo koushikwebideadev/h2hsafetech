@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Dashboard')
 
 @section('content')
     <!-- Dashboard Header -->
@@ -11,7 +12,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <!-- Features -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.features.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Features</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $featuresCount }}</p>
@@ -19,10 +20,10 @@
             <div class="h-14 w-14 rounded-2xl bg-violet-50 text-violet-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-list"></i>
             </div>
-        </div>
+        </a>
 
         <!-- Services -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.services.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Services</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $servicesCount }}</p>
@@ -30,10 +31,10 @@
             <div class="h-14 w-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-concierge-bell"></i>
             </div>
-        </div>
+        </a>
 
         <!-- Blogs -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.blogs.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Blogs</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $blogsCount }}</p>
@@ -41,10 +42,10 @@
             <div class="h-14 w-14 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-blog"></i>
             </div>
-        </div>
+        </a>
 
         <!-- Custom Pages -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.custom-pages.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Custom Pages</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $pagesCount }}</p>
@@ -52,10 +53,10 @@
             <div class="h-14 w-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-file-alt"></i>
             </div>
-        </div>
+        </a>
 
         <!-- Contact Leads -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.contact-leads.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Contact Leads</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $contactLeadsCount }}</p>
@@ -63,10 +64,10 @@
             <div class="h-14 w-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-envelope"></i>
             </div>
-        </div>
+        </a>
 
         <!-- Book Demo Leads -->
-        <div class="glass-card p-6 flex items-center justify-between">
+        <a href="{{ route('admin.book-demo-leads.index') }}" class="glass-card p-6 flex items-center justify-between block no-underline text-inherit hover:shadow-lg transition-shadow">
             <div>
                 <h3 class="text-slate-500 text-sm font-medium">Demo Leads</h3>
                 <p class="text-3xl font-bold text-slate-800 mt-1">{{ $bookDemoLeadsCount }}</p>
@@ -74,7 +75,7 @@
             <div class="h-14 w-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl">
                 <i class="fas fa-calendar-check"></i>
             </div>
-        </div>
+        </a>
     </div>
 
 

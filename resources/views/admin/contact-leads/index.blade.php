@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Contact Leads')
 
 @section('content')
     <div class="flex justify-between items-center mb-8">
