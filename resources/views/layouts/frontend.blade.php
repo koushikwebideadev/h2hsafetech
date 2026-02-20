@@ -108,12 +108,10 @@
                             href="{{ route('services') }}">Services</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('blogs.index') ? 'active' : '' }}"
                             href="{{ route('blogs.index') }}">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link {{ Route::is('book-demo.index') ? 'active' : '' }}"
-                            href="{{ route('book-demo.index') }}">Book a Demo</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a></li>
-                    <!-- <li class="nav-item ms-lg-3"><a class="btn btn-primary login-btn px-4"
-                            href="{{ route('admin.login') }}">Login</a></li> -->
+                    <li class="nav-item ms-lg-3"><a class="btn btn-primary login-btn px-4"
+                            href="{{ route('book-demo.index') }}">Book a Demo</a></li>
                 </ul>
             </div>
         </div>
@@ -225,7 +223,7 @@
             <hr class="my-5 opacity-10">
             <div class="text-center">
                 <p class="text-muted mb-0 small">&copy; {{ date('Y') }}
-                    {{ $settings['company_name'] ?? 'H2Hsafetech' }}.
+                    <!-- {{ $settings['company_name'] ?? 'H2Hsafetech' }}. -->
                     {{ $settings['company_copyright_text'] ?? 'All Rights Reserved. Powered by TJSB Bank.' }}
                 </p>
             </div>

@@ -413,7 +413,7 @@ body {
 .navbar {
     background-color: var(--white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 0.8rem 0;
+    padding: 0 0;
     transition: all 0.3s ease;
 }
 
@@ -423,9 +423,10 @@ body {
 
 .nav-link {
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.5rem 1rem !important;
     transition: color 0.3s;
+    font-size: 19px;
 }
 
 .nav-link:hover,
@@ -993,6 +994,111 @@ footer {
     .app-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+.bg-mint-light {
+    background-color: #b9fbd15c !important;
+}
+
+.feature-grid-card-new {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    border: 1px solid #e2e8f0;
+}
+
+.feature-grid-card-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Icon color variations */
+.feature-grid-card-new:nth-child(8n+1) .feature-icon-circle {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.feature-grid-card-new:nth-child(8n+2) .feature-icon-circle {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.feature-grid-card-new:nth-child(8n+3) .feature-icon-circle {
+    background-color: #fce7f3;
+    color: #db2777;
+}
+
+.feature-grid-card-new:nth-child(8n+4) .feature-icon-circle {
+    background-color: #fed7aa;
+    color: #ea580c;
+}
+
+.feature-grid-card-new:nth-child(8n+5) .feature-icon-circle {
+    background-color: #dbeafe;
+    color: #0284c7;
+}
+
+.feature-grid-card-new:nth-child(8n+6) .feature-icon-circle {
+    background-color: #e9d5ff;
+    color: #9333ea;
+}
+
+.feature-grid-card-new:nth-child(8n+7) .feature-icon-circle {
+    background-color: #fecaca;
+    color: #dc2626;
+}
+
+.feature-grid-card-new:nth-child(8n+8) .feature-icon-circle {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.feature-grid-card-new h5 {
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.feature-grid-card-new p {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.feature-grid-card-new .btn {
+    font-size: 0.85rem;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.feature-grid-card-new .btn-outline-secondary {
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+.feature-grid-card-new .btn-outline-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
 }
 
 .feature-grid-item {

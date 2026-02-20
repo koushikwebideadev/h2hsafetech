@@ -19,7 +19,7 @@
                         <a href="{{ \App\Models\SiteContent::where('key', 'hero_button_1_url')->first()->content ?? '#' }}"
                             class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_1_text')->first()->content ?? 'SIGNUP IT & TRY' }}</a>
                         <!-- <a href="{{ \App\Models\SiteContent::where('key', 'hero_button_2_url')->first()->content ?? '#' }}"
-                                class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_2_text')->first()->content ?? 'START FREE' }}</a> -->
+                                                    class="btn btn-success hero-btn px-4 py-2 fw-bold">{{ \App\Models\SiteContent::where('key', 'hero_button_2_text')->first()->content ?? 'START FREE' }}</a> -->
                     </div>
                 </div>
             </div>
@@ -254,19 +254,24 @@
     </section>
 
     <!-- H2Hsafetech Features Grid -->
-    <section class="py-5 dark-section">
+    <section class="py-5 bg-mint-light">
         <div class="container py-lg-5">
-            <div class="mb-5">
-                <h2 class="fw-bold"><span class="text-white">Features</span> <span class="text-primary">H2Hsafetech
+            <div class="mb-5 text-center">
+                <h2 class="fw-bold"><span class="text-dark">Features</span> <span class="text-primary">H2Hsafetech
                         Features</span></h2>
             </div>
             <div class="row g-4">
                 @foreach($features as $feature)
-                    <div class="col-lg-3 col-md-6">
-                        <div class="feature-grid-item">
-                            <div class="feature-grid-icon"><i class="{{ $feature->icon }}"></i></div>
-                            <h5 class="fw-bold text-white">{{ $feature->title }}</h5>
-                            <p class="small text-white-50">{{ $feature->short_description }}</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-grid-card-new">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="feature-icon-circle me-3">
+                                    <i class="{{ $feature->icon }}"></i>
+                                </div>
+                                <h5 class="fw-bold mb-0">{{ $feature->title }}</h5>
+                            </div>
+                            <p class="text-muted mb-4">{{ $feature->short_description }}</p>
+                            <a href="{{ route('book-demo.index') }}" class="btn btn-outline-secondary btn-sm me-2">Demo</a>
                         </div>
                     </div>
                 @endforeach
