@@ -258,6 +258,13 @@
                     <div>
                         <label class="block text-gray-700 text-sm font-bold mb-2">Company Address</label>
                         <textarea name="company_address" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $settings['company_address'] ?? '' }}</textarea>
+                        <p class="text-gray-500 text-xs italic">Shown on the Contact page and in the footer.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Contact Page Map (Google Maps embed URL)</label>
+                        <input type="url" name="contact_map_embed_url" value="{{ $settings['contact_map_embed_url'] ?? '' }}" placeholder="https://www.google.com/maps/embed?pb=..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <p class="text-gray-500 text-xs italic">Paste the iframe src URL from Google Maps embed. Leave empty to hide the map on the Contact page.</p>
                     </div>
 
                     <div class="border-t border-gray-200 pt-4 mt-4">

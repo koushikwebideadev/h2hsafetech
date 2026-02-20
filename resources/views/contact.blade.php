@@ -32,34 +32,39 @@
                 <div class="col-lg-4">
                     <div class="bg-white p-4 rounded-4 shadow-sm h-100">
                         <h4 class="fw-bold text-primary mb-4">Contact Information</h4>
+                        @if(isset($settings) && !empty($settings['company_address'] ?? null))
                         <div class="d-flex mb-4">
                             <div class="icon-box me-3">
                                 <i class="fas fa-location-dot"></i>
                             </div>
                             <div>
                                 <h6 class="fw-bold mb-1">Corporate Office</h6>
-                                <p class="text-muted small mb-0">TJSB House, Plot No. B-5, Road No. 2, Wagle Industrial
-                                    Estate, Thane (W) - 400604</p>
+                                <p class="text-muted small mb-0">{{ $settings['company_address'] }}</p>
                             </div>
                         </div>
+                        @endif
+                        @if(isset($settings) && !empty($settings['company_phone'] ?? null))
                         <div class="d-flex mb-4">
                             <div class="icon-box me-3">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
                                 <h6 class="fw-bold mb-1">Phone Number</h6>
-                                <p class="text-muted small mb-0">1800 103 466 / 1800 266 3466</p>
+                                <p class="text-muted small mb-0">{{ $settings['company_phone'] }}</p>
                             </div>
                         </div>
+                        @endif
+                        @if(isset($settings) && !empty($settings['company_email'] ?? null))
                         <div class="d-flex mb-4">
                             <div class="icon-box me-3">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
                                 <h6 class="fw-bold mb-1">Email Address</h6>
-                                <p class="text-muted small mb-0">response@tjsb.co.in</p>
+                                <p class="text-muted small mb-0">{{ $settings['company_email'] }}</p>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -127,14 +132,16 @@
     </section>
 
     <!-- Map Section -->
+    @if(isset($settings) && !empty($settings['contact_map_embed_url'] ?? null))
     <section class="pb-5">
         <div class="container h-100">
             <div class="rounded-4 overflow-hidden shadow-sm" style="height: 400px;">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8767228863674!2d72.94645397520846!3d19.200587782025184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b9087595d243%3A0x6bba4da3d6e50e93!2sTJSB%20House!5e0!3m2!1sen!2sin!4v1700000000000!5stjsb%20bank"
+                    src="{{ $settings['contact_map_embed_url'] }}"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
+    @endif
 @endsection

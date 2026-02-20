@@ -97,6 +97,11 @@ class BusinessSettingController extends Controller
             $this->updateSetting('footer_features', json_encode(array_values($footerFeatures)));
         }
 
+        // Contact page map embed URL (only when Footer form is submitted)
+        if ($request->has('contact_map_embed_url')) {
+            $this->updateSetting('contact_map_embed_url', $request->input('contact_map_embed_url', ''));
+        }
+
         return redirect()->route('admin.business-settings.index')->with('success', 'Settings updated successfully.');
     }
 

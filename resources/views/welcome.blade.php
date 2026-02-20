@@ -37,128 +37,7 @@
         </div>
     </div>
 
-    <!-- Enterprise Dashboard Interface Section -->
-    <section class="feature-row">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'enterprise_image')->first()->content ?? 'assets/images/content-3-3-img.png') }}"
-                        alt="Enterprise Dashboard Interface" class="img-fluid image-card-shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="fw-bold mb-3">
-                        {!! \App\Models\SiteContent::where('key', 'enterprise_title')->first()->content ?? 'Enterprise Dashboard Interface' !!}
-                    </h2>
-                    <div class="lead mb-4">
-                        {!! \App\Models\SiteContent::where('key', 'enterprise_description')->first()->content ?? 'Single Page View for Multi Sites, excellent control over operation & maintenance' !!}
-                    </div>
-                    <ul class="feature-list-new">
-                        @php
-                            $enterprise_features = json_decode(\App\Models\SiteContent::where('key', 'enterprise_features')->first()->content ?? '[]', true);
-                        @endphp
-                        @foreach($enterprise_features as $feature)
-                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Refer Section -->
-    <section class="py-5 bg-white text-center">
-        <div class="container">
-            <h2 class="fw-bold mb-4">Refer to earn Rewards</h2>
-            <a href="#"><img src="{{ asset('assets/images/refer.png') }}" alt="Refer to earn Rewards" class="img-fluid"
-                    style="max-height: 80px;"></a>
-        </div>
-    </section>
-
-    <!-- Asset Management & PPM Section -->
-    <section class="feature-row">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <h2 class="fw-bold mb-3">
-                        {!! \App\Models\SiteContent::where('key', 'asset_title')->first()->content ?? 'Asset Management & PPM' !!}
-                    </h2>
-                    <div class="lead mb-4">
-                        {!! \App\Models\SiteContent::where('key', 'asset_description')->first()->content ?? 'Manage Facility Assets & Operations' !!}
-                    </div>
-                    <ul class="feature-list-new">
-                        @php
-                            $asset_features = json_decode(\App\Models\SiteContent::where('key', 'asset_features')->first()->content ?? '[]', true);
-                        @endphp
-                        @foreach ($asset_features as $feature)
-                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-lg-5 mt-5 mt-lg-0 text-center">
-                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'asset_image')->first()->content ?? 'assets/images/content-4-img.png') }}"
-                        alt="Asset Management & PPM" class="img-fluid image-card-shadow">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Helpdesk / Complaint Management Section -->
-    <section class="feature-row bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <h2 class="fw-bold mb-3">
-                        {!! \App\Models\SiteContent::where('key', 'helpdesk_title')->first()->content ?? 'Helpdesk / Complaint Management (IVR)' !!}
-                    </h2>
-                    <div class="lead mb-4">
-                        {!! \App\Models\SiteContent::where('key', 'helpdesk_description')->first()->content ?? 'Manage your complaints like never before! IVR enabled' !!}
-                    </div>
-                    <ul class="feature-list-new">
-                        @php
-                            $helpdesk_features = json_decode(\App\Models\SiteContent::where('key', 'helpdesk_features')->first()->content ?? '[]', true);
-                        @endphp
-                        @foreach ($helpdesk_features as $feature)
-                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-lg-5 mt-5 mt-lg-0 text-center">
-                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'helpdesk_image')->first()->content ?? 'assets/images/content-3-1-img.png') }}"
-                        alt="Helpdesk Management" class="img-fluid image-card-shadow">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Billing & Payment Collection Section -->
-    <section class="feature-row">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0 text-center">
-                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'billing_image')->first()->content ?? 'assets/images/content-3-2-img.png') }}"
-                        alt="Billing & Payment" class="img-fluid">
-                </div>
-                <div class="col-lg-7">
-                    <h2 class="fw-bold mb-3">
-                        {!! \App\Models\SiteContent::where('key', 'billing_title')->first()->content ?? 'Billing & Payment Collection' !!}
-                    </h2>
-                    <div class="lead mb-4">
-                        {!! \App\Models\SiteContent::where('key', 'billing_description')->first()->content ?? '' !!}
-                    </div>
-                    <ul class="feature-list-new">
-                        @php
-                            $billing_features = json_decode(\App\Models\SiteContent::where('key', 'billing_features')->first()->content ?? '[]', true);
-                        @endphp
-                        @foreach ($billing_features as $feature)
-                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accounting Management section -->
+    <!-- 1. Accounting Management Section -->
     <section class="dark-section py-5">
         <div class="container py-lg-5">
             <div class="row align-items-center">
@@ -189,7 +68,35 @@
         </div>
     </section>
 
-    <!-- Visitor Management Section -->
+    <!-- 2. Billing & Payment Collection Section -->
+    <section class="feature-row">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0 text-center">
+                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'billing_image')->first()->content ?? 'assets/images/content-3-2-img.png') }}"
+                        alt="Billing & Payment" class="img-fluid">
+                </div>
+                <div class="col-lg-7">
+                    <h2 class="fw-bold mb-3">
+                        {!! \App\Models\SiteContent::where('key', 'billing_title')->first()->content ?? 'Billing & Payment Collection' !!}
+                    </h2>
+                    <div class="lead mb-4">
+                        {!! \App\Models\SiteContent::where('key', 'billing_description')->first()->content ?? '' !!}
+                    </div>
+                    <ul class="feature-list-new">
+                        @php
+                            $billing_features = json_decode(\App\Models\SiteContent::where('key', 'billing_features')->first()->content ?? '[]', true);
+                        @endphp
+                        @foreach ($billing_features as $feature)
+                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Visitor Management Section -->
     <section class="feature-row">
         <div class="container">
             <div class="row align-items-center">
@@ -225,7 +132,63 @@
         </div>
     </section>
 
-    <!-- Maid Management Section -->
+    <!-- 4. Asset Management & PPM Section -->
+    <section class="feature-row">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="fw-bold mb-3">
+                        {!! \App\Models\SiteContent::where('key', 'asset_title')->first()->content ?? 'Asset Management & PPM' !!}
+                    </h2>
+                    <div class="lead mb-4">
+                        {!! \App\Models\SiteContent::where('key', 'asset_description')->first()->content ?? 'Manage Facility Assets & Operations' !!}
+                    </div>
+                    <ul class="feature-list-new">
+                        @php
+                            $asset_features = json_decode(\App\Models\SiteContent::where('key', 'asset_features')->first()->content ?? '[]', true);
+                        @endphp
+                        @foreach ($asset_features as $feature)
+                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-lg-5 mt-5 mt-lg-0 text-center">
+                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'asset_image')->first()->content ?? 'assets/images/content-4-img.png') }}"
+                        alt="Asset Management & PPM" class="img-fluid image-card-shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Helpdesk / Complaint Management (IVR) Section -->
+    <section class="feature-row bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="fw-bold mb-3">
+                        {!! \App\Models\SiteContent::where('key', 'helpdesk_title')->first()->content ?? 'Helpdesk / Complaint Management (IVR)' !!}
+                    </h2>
+                    <div class="lead mb-4">
+                        {!! \App\Models\SiteContent::where('key', 'helpdesk_description')->first()->content ?? 'Manage your complaints like never before! IVR enabled' !!}
+                    </div>
+                    <ul class="feature-list-new">
+                        @php
+                            $helpdesk_features = json_decode(\App\Models\SiteContent::where('key', 'helpdesk_features')->first()->content ?? '[]', true);
+                        @endphp
+                        @foreach ($helpdesk_features as $feature)
+                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-lg-5 mt-5 mt-lg-0 text-center">
+                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'helpdesk_image')->first()->content ?? 'assets/images/content-3-1-img.png') }}"
+                        alt="Helpdesk Management" class="img-fluid image-card-shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Maid Management - SMART Card Tracking Section -->
     <section class="feature-row">
         <div class="container">
             <div class="row align-items-center">
@@ -250,6 +213,43 @@
                         alt="Maid Management Smart Card" class="img-fluid image-card-shadow">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 7. Enterprise Dashboard Interface Section -->
+    <section class="feature-row">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="{{ asset(\App\Models\SiteContent::where('key', 'enterprise_image')->first()->content ?? 'assets/images/content-3-3-img.png') }}"
+                        alt="Enterprise Dashboard Interface" class="img-fluid image-card-shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-3">
+                        {!! \App\Models\SiteContent::where('key', 'enterprise_title')->first()->content ?? 'Enterprise Dashboard Interface' !!}
+                    </h2>
+                    <div class="lead mb-4">
+                        {!! \App\Models\SiteContent::where('key', 'enterprise_description')->first()->content ?? 'Single Page View for Multi Sites, excellent control over operation & maintenance' !!}
+                    </div>
+                    <ul class="feature-list-new">
+                        @php
+                            $enterprise_features = json_decode(\App\Models\SiteContent::where('key', 'enterprise_features')->first()->content ?? '[]', true);
+                        @endphp
+                        @foreach($enterprise_features as $feature)
+                            <li><i class="fas fa-check-square"></i> {{ $feature }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refer Section -->
+    <section class="py-5 bg-white text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Refer to earn Rewards</h2>
+            <a href="{{ route('contact') }}"><img src="{{ asset('assets/images/refer.png') }}" alt="Refer to earn Rewards" class="img-fluid"
+                    style="max-height: 80px;"></a>
         </div>
     </section>
 
