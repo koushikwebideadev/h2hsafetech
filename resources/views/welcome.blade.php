@@ -254,10 +254,10 @@
     </section>
 
     <!-- H2Hsafetech Features Grid -->
-    <section class="py-5 bg-mint-light">
+    <section class="py-5 bg-dark">
         <div class="container py-lg-5">
             <div class="mb-5 text-center">
-                <h2 class="fw-bold"><span class="text-dark">Features</span> <span class="text-primary">H2Hsafetech
+                <h2 class="fw-bold"><span class="text-white">Features</span> <span class="text-primary">H2Hsafetech
                         Features</span></h2>
             </div>
             <div class="row g-4">
@@ -270,8 +270,7 @@
                                 </div>
                                 <h5 class="fw-bold mb-0">{{ $feature->title }}</h5>
                             </div>
-                            <p class="text-muted mb-4">{{ $feature->short_description }}</p>
-                            <a href="{{ route('book-demo.index') }}" class="btn btn-outline-secondary btn-sm me-2">Demo</a>
+                            <p class="text-muted mb-0">{{ $feature->short_description }}</p>
                         </div>
                     </div>
                 @endforeach

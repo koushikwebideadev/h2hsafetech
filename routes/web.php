@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Models\SiteContent;
+
+// Serve storage files (fixes broken symlink on Windows/XAMPP)
+Route::get('/storage/{path}', function (string $path) {
+    $path = str_replace(['../', '..\\'], '', $path);
+    if (! Storage::disk('public')->exists($path)) {
+        abort(404);
+    }
+    $file = Storage::disk('public')->path($path);
+    $mime = mime_content_type($file);
+    return response()->file($file, ['Content-Type' => $mime]);
+})->where('path', '.*')->name('storage.serve');
 
 Route::get('/', function () {
     $contents = SiteContent::whereIn('section', ['hero', 'enterprise_dashboard'])
