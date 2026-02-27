@@ -102,14 +102,12 @@
                             href="{{ route('about-us') }}">About us</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('features') ? 'active' : '' }}"
                             href="{{ route('features') }}">Features</a></li>
-                    {{-- <li class="nav-item"><a class="nav-link {{ Route::is('pricing') ? 'active' : '' }}"
-                            href="{{ route('pricing') }}">Pricing</a></li> --}}
+                    
                     <li class="nav-item"><a class="nav-link {{ Route::is('services') ? 'active' : '' }}"
                             href="{{ route('services') }}">Services</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('blogs.index') ? 'active' : '' }}"
                             href="{{ route('blogs.index') }}">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link {{ Route::is('documents.index') ? 'active' : '' }}"
-                            href="{{ route('documents.index') }}">Documents</a></li>
+                    
                     <li class="nav-item"><a class="nav-link {{ Route::is('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a></li>
                     <li class="nav-item ms-lg-3"><a class="btn btn-primary login-btn px-4"
