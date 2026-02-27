@@ -27,7 +27,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'blog_category_id' => 'required|exists:blog_categories,id',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:5120', // 5MB
             'meta_image' => 'nullable|image|max:2048',
         ]);
 
@@ -63,7 +63,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'blog_category_id' => 'required|exists:blog_categories,id',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:5120', // 5MB
             'meta_image' => 'nullable|image|max:2048',
         ]);
 

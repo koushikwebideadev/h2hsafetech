@@ -119,7 +119,7 @@
                             @endif
                             <input type="file" name="image" accept="image/*"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
-                            <p class="text-xs text-slate-400 mt-2 text-center">Recommended size: 1200x630px</p>
+                            <p class="text-xs text-slate-400 mt-2 text-center">Recommended size: 1200x630px. Max upload: 5MB.</p>
                         </div>
                     </div>
 
