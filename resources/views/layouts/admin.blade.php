@@ -262,6 +262,11 @@
                         <i class="fas fa-file-alt w-5 text-center"></i> <span x-show="!sidebarCollapsed">Custom
                             Pages</span>
                     </a>
+                    <a href="{{ route('admin.documents.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/documents*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
+                        :title="sidebarCollapsed ? 'Documents' : ''">
+                        <i class="fas fa-file-pdf w-5 text-center"></i> <span x-show="!sidebarCollapsed">Documents</span>
+                    </a>
                     <a href="{{ route('admin.pricing-plans.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/pricing-plans*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Pricing Plans' : ''">

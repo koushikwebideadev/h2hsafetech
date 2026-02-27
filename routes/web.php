@@ -49,6 +49,8 @@ Route::post('/book-a-demo', [\App\Http\Controllers\BookDemoController::class, 's
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blogs.show');
 
+Route::get('/documents', [\App\Http\Controllers\DocumentController::class, 'index'])->name('documents.index');
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PageController;
 
@@ -99,6 +101,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Book Demo Lead Management
         Route::resource('book-demo-leads', \App\Http\Controllers\Admin\BookDemoLeadController::class)->only(['index', 'destroy']);
+
+        // Document Management
+        Route::resource('documents', \App\Http\Controllers\Admin\DocumentController::class);
 
         // SEO Settings
         Route::resource('seo-settings', \App\Http\Controllers\Admin\SeoSettingController::class);
