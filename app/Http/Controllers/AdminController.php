@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -60,5 +61,22 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/admin/login');
+    }
+
+    /**
+     * Clear application cache (config, route, view, and application cache).
+     */
+    public function clearCache(Request $request)
+    {
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Cache cleared successfully.']);
+        }
+
+        return back()->with('success', 'Cache cleared successfully.');
     }
 }

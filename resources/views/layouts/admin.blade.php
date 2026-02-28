@@ -14,10 +14,10 @@
     @if($favIconPath)
         <link rel="icon" type="image/x-icon" href="{{ $favIconPath }}">
     @endif
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 </head>
@@ -214,6 +214,14 @@
 
                 <!-- Right: Actions -->
                 <div class="flex items-center gap-4">
+                    <form action="{{ route('admin.clear-cache') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit"
+                            class="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                            title="Clear application cache">
+                            <i class="fas fa-broom"></i> Clear cache
+                        </button>
+                    </form>
                     <a href="{{ url('/') }}" target="_blank"
                         class="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-violet-600 bg-violet-50 hover:bg-violet-100 rounded-lg transition-colors">
                         <i class="fas fa-external-link-alt"></i> Visit Website
@@ -270,6 +278,11 @@
 
             <!-- Scrollable Content -->
             <main class="flex-1 overflow-y-auto p-6 scroll-smooth">
+                @if(session('success'))
+                    <div class="mb-4 px-4 py-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 @yield('content')
             </main>
         </div>

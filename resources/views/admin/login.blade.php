@@ -14,8 +14,8 @@
     @if($favIconPath)
         <link rel="icon" type="image/x-icon" href="{{ $favIconPath }}">
     @endif
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
 </head>
 
 <body class="admin-login bg-slate-50 h-screen flex items-center justify-center p-4">

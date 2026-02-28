@@ -66,6 +66,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/profile', [\App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
 
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+        Route::post('/clear-cache', [AdminController::class, 'clearCache'])->name('clear-cache');
 
         // Feature Management
         Route::resource('features', \App\Http\Controllers\Admin\FeatureController::class);
