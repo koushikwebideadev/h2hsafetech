@@ -14,41 +14,11 @@
     @if($favIconPath)
         <link rel="icon" type="image/x-icon" href="{{ $favIconPath }}">
     @endif
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .btn-premium {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #7c3aed;
-            /* violet-600 */
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-        }
-
-        .btn-premium:hover {
-            background-color: #6d28d9;
-            /* violet-700 */
-            box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .btn-premium:active {
-            transform: scale(0.95);
-        }
-    </style>
 </head>
 
-<body class="bg-slate-50 h-screen flex items-center justify-center p-4">
+<body class="admin-login bg-slate-50 h-screen flex items-center justify-center p-4">
 
     <div class="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 max-w-md w-full border border-slate-100">
         <div class="text-center mb-8">
