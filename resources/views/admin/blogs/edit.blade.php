@@ -110,14 +110,11 @@
                     <div class="glass-card p-6 space-y-4">
                         <h3 class="font-bold text-slate-700 mb-4 border-b pb-2">Feature Image</h3>
 
+                        <div id="feature-image-preview-wrap" class="mb-4 {{ $blog->image ? '' : 'hidden' }}">
+                            <img id="feature-image-preview" src="{{ $blog->image ? asset('assets/images/blogs/' . $blog->image) : '' }}" alt="Preview" class="w-full h-40 object-cover rounded-xl shadow-inner bg-slate-100">
+                        </div>
                         <div>
-                            @if($blog->image)
-                                <div class="mb-4">
-                                    <img src="{{ asset('assets/images/blogs/' . $blog->image) }}"
-                                        class="w-full h-40 object-cover rounded-xl shadow-inner bg-slate-100">
-                                </div>
-                            @endif
-                            <input type="file" name="image" accept="image/*"
+                            <input type="file" name="image" id="feature-image-input" accept="image/*"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
                             <p class="text-xs text-slate-400 mt-2 text-center">Recommended size: 1200x630px. Max upload: 5MB.</p>
                         </div>
@@ -146,6 +143,23 @@
                 .catch(error => {
                     console.error(error);
                 });
+        });
+
+        document.getElementById('feature-image-input').addEventListener('change', function(e) {
+            const wrap = document.getElementById('feature-image-preview-wrap');
+            const preview = document.getElementById('feature-image-preview');
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    preview.src = reader.result;
+                    wrap.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                wrap.classList.add('hidden');
+            }
         });
     </script>
     <style>
