@@ -129,7 +129,7 @@
                                         </a>
                                         <a href="#" class="btn btn-outline-info btn-sm rounded-circle"
                                             style="width: 35px; height: 35px; padding: 0; line-height: 33px; text-align: center;">
-                                            <i class="fab fa-twitter"></i>
+                                            <i class="fab fa-youtube"></i>
                                         </a>
                                         <a href="#" class="btn btn-outline-dark btn-sm rounded-circle"
                                             style="width: 35px; height: 35px; padding: 0; line-height: 33px; text-align: center;">

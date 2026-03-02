@@ -220,8 +220,8 @@
                             <input type="text" name="social_links[facebook]" value="{{ $socials['facebook'] ?? '' }}" placeholder="https://facebook.com/..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>
                          <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Twitter</label>
-                            <input type="text" name="social_links[twitter]" value="{{ $socials['twitter'] ?? '' }}" placeholder="https://twitter.com/..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">YouTube</label>
+                            <input type="text" name="social_links[twitter]" value="{{ $socials['twitter'] ?? '' }}" placeholder="https://youtube.com/..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>
                          <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2">LinkedIn</label>
