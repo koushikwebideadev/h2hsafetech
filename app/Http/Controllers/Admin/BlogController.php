@@ -26,13 +26,14 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:blogs,slug',
             'blog_category_id' => 'required|exists:blog_categories,id',
             'image' => 'nullable|image|max:5120', // 5MB
             'meta_image' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['slug'] = Str::slug($request->slug);
         $data['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('image')) {
@@ -62,13 +63,14 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:blogs,slug,' . $blog->id,
             'blog_category_id' => 'required|exists:blog_categories,id',
             'image' => 'nullable|image|max:5120', // 5MB
             'meta_image' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['slug'] = Str::slug($request->slug);
         $data['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('image')) {

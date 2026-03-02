@@ -85,6 +85,17 @@
                         </div>
 
                         <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Slug <span class="text-red-500">*</span></label>
+                            <input type="text" name="slug" id="slug" placeholder="url-friendly-slug" required
+                                value="{{ old('slug') }}"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100 @error('slug') border-red-500 @enderror">
+                            <p class="text-xs text-slate-400 mt-1">Used in the URL (e.g. /blog/your-slug). Must be unique.</p>
+                            @error('slug')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Tags (Comma separated)</label>
                             <input type="text" name="tags" placeholder="e.g. Banking, Technology, Updates" value="{{ old('tags') }}"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
