@@ -51,6 +51,8 @@ Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show']
 
 Route::get('/documents', [\App\Http\Controllers\DocumentController::class, 'index'])->name('documents.index');
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PageController;
 
