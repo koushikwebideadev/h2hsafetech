@@ -4,6 +4,9 @@
 
 @push('css')
     <meta name="description" content="{{ $blog->meta_description ?? Str::limit($blog->short_description, 160) }}">
+    @if($blog->keyword)
+        <meta name="keywords" content="{{ $blog->keyword }}">
+    @endif
     @if($blog->meta_image)
         <meta property="og:image" content="{{ asset('assets/images/blogs/' . $blog->meta_image) }}">
     @endif
@@ -70,7 +73,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     @if($blog->image)
-                        <img src="{{ asset('assets/images/blogs/' . $blog->image) }}" alt="{{ $blog->title }}"
+                        <img src="{{ asset('assets/images/blogs/' . $blog->image) }}" alt="{{ $blog->image_alt ?? $blog->title }}"
                             class="img-fluid rounded-4 shadow-sm mb-5 w-100">
                     @endif
 
@@ -99,7 +102,7 @@
                                 @foreach($recent_blogs as $recent)
                                     <div class="d-flex mb-4 gap-3">
                                         @if($recent->image)
-                                            <img src="{{ asset('assets/images/blogs/' . $recent->image) }}" class="rounded"
+                                            <img src="{{ asset('assets/images/blogs/' . $recent->image) }}" alt="{{ $recent->image_alt ?? $recent->title }}" class="rounded"
                                                 style="width: 60px; height: 60px; object-fit: cover;">
                                         @else
                                             <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted"

@@ -15,9 +15,11 @@ class Blog extends Model
         'blog_category_id',
         'tags',
         'image',
+        'image_alt',
         'meta_title',
         'meta_description',
         'meta_image',
+        'keyword',
         'is_active',
     ];
 

@@ -59,6 +59,13 @@
                         </div>
 
                         <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Keyword</label>
+                            <input type="text" name="keyword" placeholder="e.g. banking, safety, technology" value="{{ old('keyword') }}"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
+                            <p class="text-xs text-slate-400 mt-1">Comma-separated or single keyword for SEO.</p>
+                        </div>
+
+                        <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Meta Image</label>
                             <input type="file" name="meta_image" accept="image/*"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
@@ -118,6 +125,11 @@
                             <input type="file" name="image" id="feature-image-input" accept="image/*"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
                             <p class="text-xs text-slate-400 mt-2 text-center">Recommended size: 1200x630px. Max upload: 5MB.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Image Alt Text</label>
+                            <input type="text" name="image_alt" placeholder="Describe the image for accessibility & SEO" value="{{ old('image_alt') }}"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">
                         </div>
                     </div>
 
