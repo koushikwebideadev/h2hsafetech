@@ -12,6 +12,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-white promo-text-content">
+                    <h1 class="fw-bold mb-4">Best Society Management Software for Bhubaneswar</h1>
                     <p class="fw-bold mb-4">
                         {!! \App\Models\SiteContent::where('key', 'hero_title')->first()->content ?? 'Be SMARTER, DELIGHT RESIDENTS...' !!}
                     </p>

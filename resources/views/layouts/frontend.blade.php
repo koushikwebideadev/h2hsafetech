@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    @php
+    $webLogo = isset($settings['company_web_logo']) ? json_decode($settings['company_web_logo'], true) : null;
+    $webLogoPath = ($webLogo && isset($webLogo['image_name']))
+        ? (($webLogo['storage'] ?? 'public') == 'assets/images' ? asset('assets/images/' . $webLogo['image_name']) : asset('storage/' . $webLogo['image_name']))
+        : asset('assets/images/logo.png');
+    @endphp
     {{-- SEO Logic --}}
     @php
         $currentRoute = Route::currentRouteName();
@@ -14,8 +20,9 @@
         $metaTitle = $seoSetting ? ($seoSetting->seo_title ?? ($settings['company_name'] ?? 'H2Hsafetech')) : ($settings['company_name'] ?? 'H2Hsafetech');
         $metaDesc = $seoSetting ? ($seoSetting->seo_description ?? ($settings['footer_description'] ?? 'H2Hsafetech - Hassle-Free Society Management')) : ($settings['footer_description'] ?? 'H2Hsafetech - Hassle-Free Society Management');
         $metaKeywords = $seoSetting ? ($seoSetting->seo_keywords ?? 'society management, housing society, banking') : 'society management, housing society, banking';
-        $metaImage = $seoSetting && $seoSetting->seo_image ? asset($seoSetting->seo_image) : asset('assets/images/logo.png');
+        $metaImage = $seoSetting && $seoSetting->seo_image ? asset($seoSetting->seo_image) : $webLogoPath;
     @endphp
+    <meta name="image" content="{{ $metaImage }}">
 
     <title>@yield('title', $metaTitle)</title>
     <meta name="description" content="@yield('meta_description', $metaDesc)">
