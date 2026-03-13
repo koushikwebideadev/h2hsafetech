@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SeoSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SeoSettingController extends Controller
 {
@@ -35,15 +36,17 @@ class SeoSettingController extends Controller
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string',
             'seo_keywords' => 'nullable|string',
-            'seo_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'seo_image' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $input = $request->except('seo_image');
 
         if ($request->hasFile('seo_image')) {
             $file = $request->file('seo_image');
+            $dir = public_path('assets/images/seo');
+            File::ensureDirectoryExists($dir);
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('assets/images/seo'), $filename);
+            $file->move($dir, $filename);
             $input['seo_image'] = 'assets/images/seo/' . $filename;
         }
 
@@ -71,15 +74,17 @@ class SeoSettingController extends Controller
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string',
             'seo_keywords' => 'nullable|string',
-            'seo_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'seo_image' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $input = $request->except('seo_image');
 
         if ($request->hasFile('seo_image')) {
             $file = $request->file('seo_image');
+            $dir = public_path('assets/images/seo');
+            File::ensureDirectoryExists($dir);
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('assets/images/seo'), $filename);
+            $file->move($dir, $filename);
             $input['seo_image'] = 'assets/images/seo/' . $filename;
 
             // Delete old image if exists

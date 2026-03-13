@@ -67,6 +67,22 @@
                 <div>
                     <label for="seo_image" class="block text-sm font-semibold text-slate-700 mb-1">SEO Image (OG
                         Image)</label>
+
+                    <!-- Preview section -->
+                    <div id="seo-image-preview-wrap" class="mb-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Preview</p>
+                        <div id="seo-image-preview" class="flex items-start gap-4 flex-wrap">
+                            <div id="seo-new-preview" class="hidden flex flex-col">
+                                <img id="seo-new-preview-img" src="" alt="New image preview"
+                                    class="max-h-40 w-auto object-contain rounded border border-violet-200 bg-white">
+                                <span class="text-xs text-violet-600 mt-1">Will be used as OG image after save</span>
+                            </div>
+                            <div id="seo-no-preview" class="text-slate-400 text-sm">
+                                No image selected. Choose a file below to see preview.
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="mt-1 flex items-center justify-center w-full">
                         <label for="seo_image"
                             class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
@@ -95,4 +111,29 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        document.getElementById('seo_image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const newWrap = document.getElementById('seo-new-preview');
+            const newImg = document.getElementById('seo-new-preview-img');
+            const noPreview = document.getElementById('seo-no-preview');
+
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    newImg.src = e.target.result;
+                    newWrap.classList.remove('hidden');
+                    noPreview.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                newWrap.classList.add('hidden');
+                newImg.src = '';
+                noPreview.classList.remove('hidden');
+            }
+        });
+    </script>
+    @endpush
 @endsection
