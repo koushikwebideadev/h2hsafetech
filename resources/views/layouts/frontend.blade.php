@@ -170,13 +170,13 @@
                         {{ $settings['footer_description'] ?? 'H2Hsafetech provides comprehensive solutions for housing society management, combining technology with banking expertise.' }}
                     </p>
                     <div class="footer-social mt-4">
-                        @if(isset($socials['facebook'])) <a href="{{ $socials['facebook'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
+                        @if(isset($socials['facebook'])) <a target="_blank" href="{{ $socials['facebook'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
                         class="fab fa-facebook-f"></i></a> @endif
-                        @if(isset($socials['twitter'])) <a href="{{ $socials['twitter'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
+                        @if(isset($socials['twitter'])) <a target="_blank" href="{{ $socials['twitter'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
                         class="fab fa-youtube"></i></a> @endif
-                        @if(isset($socials['linkedin'])) <a href="{{ $socials['linkedin'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
+                        @if(isset($socials['linkedin'])) <a target="_blank" href="{{ $socials['linkedin'] }}" class="me-3" target="_blank" rel="noopener noreferrer"><i
                         class="fab fa-linkedin-in"></i></a> @endif
-                        @if(isset($socials['instagram'])) <a href="{{ $socials['instagram'] }}" target="_blank" rel="noopener noreferrer"><i
+                        @if(isset($socials['instagram'])) <a target="_blank" href="{{ $socials['instagram'] }}" target="_blank" rel="noopener noreferrer"><i
                         class="fab fa-instagram"></i></a> @endif
                     </div>
                 </div>
