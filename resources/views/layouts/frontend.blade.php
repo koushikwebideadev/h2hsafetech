@@ -28,6 +28,8 @@
     <meta name="description" content="@yield('meta_description', $metaDesc)">
     <meta name="keywords" content="@yield('meta_keywords', $metaKeywords)">
 
+    <link rel="canonical" href="{{ url()->current() }}" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
@@ -83,13 +85,13 @@
                 $socials = isset($settings['social_links']) ? json_decode($settings['social_links'], true) : [];
             @endphp
             <div class="social-links">
-                @if(isset($socials['facebook'])) <a href="{{ $socials['facebook'] }}"><i
+                @if(isset($socials['facebook'])) <a target="_blank" href="{{ $socials['facebook'] }}"><i
                 class="fab fa-facebook-f"></i></a> @endif
-                @if(isset($socials['twitter'])) <a href="{{ $socials['twitter'] }}"><i class="fab fa-youtube"></i></a>
+                @if(isset($socials['twitter'])) <a target="_blank" href="{{ $socials['twitter'] }}"><i class="fab fa-youtube"></i></a>
                 @endif
-                @if(isset($socials['linkedin'])) <a href="{{ $socials['linkedin'] }}"><i
+                @if(isset($socials['linkedin'])) <a target="_blank" href="{{ $socials['linkedin'] }}"><i
                 class="fab fa-linkedin-in"></i></a> @endif
-                @if(isset($socials['instagram'])) <a href="{{ $socials['instagram'] }}"><i
+                @if(isset($socials['instagram'])) <a target="_blank" href="{{ $socials['instagram'] }}"><i
                 class="fab fa-instagram"></i></a> @endif
             </div>
         </div>
