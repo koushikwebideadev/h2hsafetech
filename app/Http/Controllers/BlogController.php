@@ -33,6 +33,12 @@ class BlogController extends Controller
         $blog = Blog::with('category')->where('slug', $slug)->where('is_active', true)->firstOrFail();
         $recent_blogs = Blog::where('id', '!=', $blog->id)->where('is_active', true)->latest()->take(3)->get();
 
-        return view('blogs.show', compact('blog', 'recent_blogs'));
+        $filename = $blog->meta_image ?? $blog->image;
+        $ogImage = $filename ? asset('assets/images/blogs/'.$filename) : null;
+        if ($ogImage && str_starts_with((string) config('app.url'), 'https://')) {
+            $ogImage = preg_replace('#^http://#', 'https://', $ogImage);
+        }
+
+        return view('blogs.show', compact('blog', 'recent_blogs', 'ogImage'));
     }
 }

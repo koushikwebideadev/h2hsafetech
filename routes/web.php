@@ -47,6 +47,11 @@ Route::get('/book-a-demo', [\App\Http\Controllers\BookDemoController::class, 'in
 Route::post('/book-a-demo', [\App\Http\Controllers\BookDemoController::class, 'store'])->name('book-demo.store');
 
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class, 'index'])->name('blogs.index');
+Route::redirect(
+    '/blog/best-visitor-management-system-bhubneshwar-apartment-gated-communities',
+    '/blog/best-visitor-management-system-in-bhubaneswar-in-2026',
+    301
+);
 Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blogs.show');
 
 Route::get('/documents', [\App\Http\Controllers\DocumentController::class, 'index'])->name('documents.index');

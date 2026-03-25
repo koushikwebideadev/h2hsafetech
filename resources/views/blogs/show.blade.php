@@ -1,16 +1,19 @@
 @extends('layouts.frontend')
 
+@php
+    $shortPlain = Str::limit(strip_tags($blog->short_description ?? ''), 160);
+    $metaDescPlain = trim(strip_tags($blog->meta_description ?? ''));
+    $metaDescription = $shortPlain !== ''
+        ? $shortPlain
+        : ($metaDescPlain !== '' ? Str::limit($metaDescPlain, 160) : '');
+@endphp
+
+@section('og_type', 'article')
 @section('title', $blog->meta_title ?? $blog->title . ' - H2Hsafetech')
+@section('meta_description', $metaDescription)
+@section('meta_keywords', $blog->keyword ?? '')
 
 @push('css')
-    <meta name="description" content="{{ $blog->meta_description ?? Str::limit($blog->short_description, 160) }}">
-    @if($blog->keyword)
-        <meta name="keywords" content="{{ $blog->keyword }}">
-    @endif
-    @if($blog->meta_image)
-        <meta property="og:image" content="{{ asset('assets/images/blogs/' . $blog->meta_image) }}">
-    @endif
-
     <style>
         .blog-content {
             line-height: 1.8;

@@ -22,7 +22,10 @@
         $metaKeywords = $seoSetting ? ($seoSetting->seo_keywords ?? 'society management, housing society, banking') : 'society management, housing society, banking';
         $metaImage = $seoSetting && $seoSetting->seo_image ? asset($seoSetting->seo_image) : $webLogoPath;
     @endphp
-    <meta name="image" content="{{ $metaImage }}">
+    @php
+        $resolvedOgImage = (isset($ogImage) && $ogImage) ? $ogImage : $metaImage;
+    @endphp
+    <meta name="image" content="{{ $resolvedOgImage }}">
 
     <title>@yield('title', $metaTitle)</title>
     <meta name="description" content="@yield('meta_description', $metaDesc)">
@@ -31,18 +34,21 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', $metaTitle)">
     <meta property="og:description" content="@yield('meta_description', $metaDesc)">
-    <meta property="og:image" content="@yield('meta_image', $metaImage)">
+    <meta property="og:image" content="{{ $resolvedOgImage }}">
+    @if(str_starts_with($resolvedOgImage, 'https://'))
+        <meta property="og:image:secure_url" content="{{ $resolvedOgImage }}">
+    @endif
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('title', $metaTitle)">
     <meta property="twitter:description" content="@yield('meta_description', $metaDesc)">
-    <meta property="twitter:image" content="@yield('meta_image', $metaImage)">
+    <meta property="twitter:image" content="{{ $resolvedOgImage }}">
 
     <!-- Favicon -->
     @php
