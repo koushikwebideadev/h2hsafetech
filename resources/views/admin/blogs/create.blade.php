@@ -38,8 +38,16 @@
 
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Long Description</label>
-                            <textarea name="long_description" rows="10"
-                                class="editor w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">{{ old('long_description') }}</textarea>
+                            <div class="long-description-editor">
+                                <div class="long-desc-toolbar-slot flex justify-end mb-2 items-center">
+                                    <button type="button"
+                                        class="long-desc-source-toggle text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition inline-flex items-center gap-1.5 shadow-sm">
+                                        <i class="fas fa-code"></i> HTML
+                                    </button>
+                                </div>
+                                <textarea name="long_description" rows="10"
+                                    class="editor w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-100">{{ old('long_description') }}</textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -148,25 +156,121 @@
 @push('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script>
-        document.querySelectorAll('.editor').forEach(el => {
-            ClassicEditor
-                .create(el, {
-                    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
-                    heading: {
-                        options: [
-                            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-                            { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-                            { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-                            { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-                        ]
+        const longDescCkConfig = {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                    { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                    { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                    { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+                ]
+            }
+        };
+
+        document.querySelectorAll('.long-description-editor').forEach(function(wrapper) {
+            const textarea = wrapper.querySelector('textarea.editor');
+            const toggleBtn = wrapper.querySelector('.long-desc-source-toggle');
+            const slot = wrapper.querySelector('.long-desc-toolbar-slot');
+            if (!textarea || !toggleBtn) {
+                return;
+            }
+
+            let editor = null;
+            let isSourceMode = false;
+
+            function moveToggleToToolbar(ed) {
+                try {
+                    ed.ui.view.toolbar.element.appendChild(toggleBtn);
+                    if (slot) {
+                        slot.classList.add('hidden');
                     }
-                })
-                .catch(error => {
+                } catch (err) {
+                    /* toolbar not ready */
+                }
+            }
+
+            function moveToggleToSlot() {
+                if (slot) {
+                    slot.appendChild(toggleBtn);
+                    slot.classList.remove('hidden');
+                }
+            }
+
+            const form = wrapper.closest('form');
+            if (form) {
+                form.addEventListener('submit', function() {
+                    if (editor && !isSourceMode) {
+                        if (typeof editor.updateSourceElement === 'function') {
+                            editor.updateSourceElement();
+                        } else {
+                            textarea.value = editor.getData();
+                        }
+                    }
+                });
+            }
+
+            function setToggleVisual() {
+                toggleBtn.innerHTML = '<i class="fas fa-code"></i> HTML';
+                toggleBtn.setAttribute('aria-pressed', 'false');
+            }
+
+            function setToggleSource() {
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i> Visual';
+                toggleBtn.setAttribute('aria-pressed', 'true');
+            }
+
+            function enterSourceMode() {
+                if (!editor || isSourceMode) {
+                    return;
+                }
+                const html = editor.getData();
+                moveToggleToSlot();
+                Promise.resolve(editor.destroy()).then(function() {
+                    editor = null;
+                    isSourceMode = true;
+                    textarea.value = html;
+                    textarea.classList.add('font-mono', 'text-xs', 'leading-relaxed');
+                    textarea.style.minHeight = '300px';
+                    setToggleSource();
+                }).catch(function(err) {
+                    console.error(err);
+                });
+            }
+
+            function leaveSourceMode() {
+                if (editor || !isSourceMode) {
+                    return;
+                }
+                textarea.classList.remove('font-mono', 'text-xs', 'leading-relaxed');
+                textarea.style.minHeight = '';
+                ClassicEditor.create(textarea, longDescCkConfig).then(function(ed) {
+                    editor = ed;
+                    isSourceMode = false;
+                    setToggleVisual();
+                    moveToggleToToolbar(ed);
+                }).catch(function(error) {
                     console.error(error);
                 });
+            }
+
+            toggleBtn.addEventListener('click', function() {
+                if (isSourceMode) {
+                    leaveSourceMode();
+                } else {
+                    enterSourceMode();
+                }
+            });
+
+            ClassicEditor.create(textarea, longDescCkConfig).then(function(ed) {
+                editor = ed;
+                moveToggleToToolbar(ed);
+            }).catch(function(error) {
+                console.error(error);
+            });
         });
 
         document.getElementById('feature-image-input').addEventListener('change', function(e) {
