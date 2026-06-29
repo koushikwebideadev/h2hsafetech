@@ -76,6 +76,12 @@
                         <i class="fas fa-mobile-screen w-5 text-center"></i> <span x-show="!sidebarCollapsed">Manage
                             Screenshots</span>
                     </a>
+                    <a href="{{ route('admin.partner-logos.index') }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/partner-logos*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
+                        :title="sidebarCollapsed ? 'Partner Logos' : ''">
+                        <i class="fas fa-award w-5 text-center"></i> <span x-show="!sidebarCollapsed">Partner
+                            Logos</span>
+                    </a>
                     <a href="{{ route('admin.services.index') }}"
                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ Request::is('admin/services*') ? 'sidebar-active' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} font-medium text-sm transition-colors"
                         :title="sidebarCollapsed ? 'Manage Services' : ''">

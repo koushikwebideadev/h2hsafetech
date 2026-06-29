@@ -38,6 +38,8 @@
         </div>
     </div>
 
+    @include('partials.partner-logos-marquee')
+
     <!-- 1. Accounting Management Section -->
     <section class="dark-section py-5">
         <div class="container py-lg-5">

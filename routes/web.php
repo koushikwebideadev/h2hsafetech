@@ -33,7 +33,8 @@ Route::get('/', function () {
         ->groupBy('section');
     $features = \App\Models\Feature::orderBy('order')->get();
     $screenshots = \App\Models\Screenshot::orderBy('order')->get();
-    return view('welcome', compact('contents', 'features', 'screenshots'));
+    $partnerLogos = \App\Models\PartnerLogo::where('is_active', true)->orderBy('sort_order')->with('page')->get();
+    return view('welcome', compact('contents', 'features', 'screenshots', 'partnerLogos'));
 })->name('home');
 
 Route::get('/services', [App\Http\Controllers\HomeController::class, 'services'])->name('services');
@@ -80,6 +81,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Screenshot Management
         Route::resource('screenshots', \App\Http\Controllers\Admin\ScreenshotController::class);
+
+        // Partner Logo Management
+        Route::resource('partner-logos', \App\Http\Controllers\Admin\PartnerLogoController::class)->except(['show']);
 
         // Service Management
         Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
